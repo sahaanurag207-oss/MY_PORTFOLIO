@@ -97,23 +97,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 6. Theme Switcher Logic
-    const themeButtons = document.querySelectorAll('.theme-btn');
-    const currentTheme = localStorage.getItem('theme') || 'blue';
-
-    // Apply saved theme on load
-    document.documentElement.setAttribute('data-theme', currentTheme);
-    themeButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.theme === currentTheme);
-    });
-
-    themeButtons.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const theme = btn.dataset.theme;
-            document.documentElement.setAttribute('data-theme', theme);
-            themeButtons.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            localStorage.setItem('theme', theme);
-        });
-    });
 });

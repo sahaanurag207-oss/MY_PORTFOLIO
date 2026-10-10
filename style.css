@@ -6,20 +6,12 @@
     --container-width: 1200px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
-    /* Default Blue Theme */
+    /* Blue Theme */
     --accent-color: #3b82f6;
     --accent-hover: #60a5fa;
     --accent-glow: rgba(59, 130, 246, 0.2);
     --accent-glow-low: rgba(59, 130, 246, 0.1);
     --accent-glow-high: rgba(59, 130, 246, 0.4);
-}
-
-[data-theme="red"] {
-    --accent-color: #ef6b6b;
-    --accent-hover: #ff7b7b;
-    --accent-glow: rgba(239, 107, 107, 0.2);
-    --accent-glow-low: rgba(239, 107, 107, 0.1);
-    --accent-glow-high: rgba(239, 107, 107, 0.4);
 }
 
 /* Background Glow Blobs */
@@ -655,58 +647,8 @@ nav ul li a.active {
     font-size: 1.5rem;
 }
 
-/* Theme Switcher Styles */
-.theme-switcher {
-    position: fixed;
-    right: 30px;
-    bottom: 30px;
-    z-index: 2000;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(15px);
-    padding: 10px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    display: flex;
-    gap: 10px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    animation: fadeInUp 1s ease-out 1s both;
-}
-
-.theme-btn {
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.theme-btn.red {
-    background: #ef6b6b;
-    box-shadow: 0 0 15px rgba(239, 107, 107, 0.3);
-}
-
-.theme-btn.blue {
-    background: #3b82f6;
-    box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
-}
-
-.theme-btn:hover {
-    transform: scale(1.15);
-}
-
-.theme-btn.active {
-    border-color: #ffffff;
-    transform: scale(1.1);
-}
-
 /* Responsive Styles */
 @media (max-width: 992px) {
-    .theme-switcher {
-        bottom: 20px;
-        right: 20px;
-    }
-
     .nav-container {
         flex-direction: column;
         height: auto;
