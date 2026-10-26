@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Sticky Header Effect
+
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
@@ -9,7 +9,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. Active Navigation Link Highlighting
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
 
@@ -31,7 +30,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Scroll Reveal Animations using Intersection Observer
     const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px"
@@ -64,7 +62,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 4. Smooth Scrolling for Navigation Links
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
@@ -77,23 +74,28 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 5. Form Submission Handling (Mock)
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
         contactForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const submitBtn = contactForm.querySelector('button');
-            const originalText = submitBtn.innerText;
+            const status = contactForm.querySelector('.form-status');
+            const emailLink = document.querySelector('.contact-info a[href^="mailto:"]');
 
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
+            if (!emailLink) {
+                status.textContent = 'Email contact is currently unavailable. Please try again later.';
+                return;
+            }
 
-            setTimeout(() => {
-                alert('Thank you for your message, Anurag will get back to you soon!');
-                contactForm.reset();
-                submitBtn.innerText = originalText;
-                submitBtn.disabled = false;
-            }, 1500);
+            const formData = new FormData(contactForm);
+            const name = formData.get('name');
+            const email = formData.get('email');
+            const message = formData.get('message');
+            const recipient = emailLink.getAttribute('href').slice('mailto:'.length);
+            const subject = encodeURIComponent(`Portfolio contact from ${name}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+
+            status.textContent = `Your email app should open with your message ready to send. If it doesn't, email ${recipient}.`;
+            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
         });
     }
 

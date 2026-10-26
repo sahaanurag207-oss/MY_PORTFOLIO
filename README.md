@@ -24,7 +24,7 @@ A clean, modern, and responsive personal portfolio website built to showcase sof
   - *Moon Crescent* (Pure HTML/CSS animation)
 - **Certifications:** Credentials covering Google Cloud Platform (GCP), Hack The Box (SOC Level - I & Penetration Testing), and Python.
 - **Awards & Profiles:** Competitive programming ratings and links (LeetCode, Codeforces) and community involvement (ISTE Member).
-- **Contact:** Functional direct messaging form and social links (GitHub, LinkedIn, Email).
+- **Contact:** A contact form that opens a prefilled email draft, plus social links (GitHub, LinkedIn, Email).
 
 ---
 

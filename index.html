@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anurag | Portfolio</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/svg+xml" href="me.jpg">
+    <link rel="icon" type="image/jpeg" href="me.jpg">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +44,7 @@
             <div class="container hero-container">
                 <div class="hero-image-wrapper">
                     <div class="image-backdrop"></div>
-                    <img src="spiderman-miles-morales-dark-4k-hp-480x800.jpg" alt="Alex" class="hero-img">
+                    <img src="me.jpg" alt="Portrait of Anurag Saha" class="hero-img">
                 </div>
                 <div class="hero-content">
                     <h1 class="hero-title">Hi, It's <span>Anurag</span></h1>
@@ -140,8 +140,9 @@
                         <div class="timeline-content">
                             <h3>ZERO_LOGON | MEMBER </h3>
                             <p class="timeline-date">2023 - 2024</p>
-                            <p> Ideas and solutions to enhance team performance and outcomes by analysing problems and penetrating into it to solve from the basics.
-                            But still Learning and trying to improve myself.</p>
+                            <p>Collaborated with team members to analyze problems, develop practical solutions, and
+                                improve team outcomes. Continued building my skills through hands-on learning and
+                                feedback.</p>
                         </div>
                     </div>
                 </div>
@@ -171,14 +172,14 @@
                         <p class="project-desc">Python-based currency converter that converts amounts using real-time
                             exchange rates via API. Implemented user input handling, conditional logic, and functions
                             for accurate conversions.</p>
-                        <a href="#" class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
+                        <span class="project-link-unavailable">Project link not available</span>
                     </div>
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-calculator"></i></div>
                         <h3>Calculator</h3>
                         <p class="project-tech">HTML, CSS, JS</p>
-                        <p class="project-desc">A modern, scientifically-capable calculator web application featuring a
-                            sleek Glassmorphism design with advanced functional handling.</p>
+                        <p class="project-desc">A browser-based scientific calculator with an interactive interface
+                            and a sleek glassmorphism design, built with HTML, CSS, and JavaScript.</p>
                         <a href="https://calculator-app-sand-nine.vercel.app/" target="_blank" rel="noopener noreferrer"
                             class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
                     </div>
@@ -186,15 +187,16 @@
                         <div class="project-icon"><i class="fas fa-ticket"></i></div>
                         <h3>Ticket Booking System</h3>
                         <p class="project-tech">HTML, CSS, JS</p>
-                        <p class="project-desc"> A modern ticket booking system For Museum and the details by showing
-                            and gettina a digital ticket from it.</p>
-                        <a href="#" class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
+                        <p class="project-desc">A modern museum ticketing interface that presents event details and
+                            lets visitors generate a digital ticket.</p>
+                        <span class="project-link-unavailable">Project link not available</span>
                     </div>
                     <div class="project-card">
                         <div class="project-icon"><i class="fas fa-moon"></i></div>
                         <h3>Moon Crescent</h3>
                         <p class="project-tech">HTML, CSS</p>
-                        <p class="project-desc"> An animation of a moon crescent.</p>
+                        <p class="project-desc">A lightweight crescent-moon animation built with pure HTML and CSS,
+                            showcasing CSS-based visual effects without JavaScript.</p>
                         <a href="https://moon-mauve-ten.vercel.app/" target="_blank" rel="noopener noreferrer"
                             class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
                     </div>
@@ -265,10 +267,15 @@
                 <h2 class="section-title">Get In <span>Touch</span></h2>
                 <div class="contact-container">
                     <form class="contact-form">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="email" placeholder="Your Email" required>
-                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                        <label class="sr-only" for="contact-name">Your Name</label>
+                        <input id="contact-name" name="name" type="text" placeholder="Your Name" required>
+                        <label class="sr-only" for="contact-email">Your Email</label>
+                        <input id="contact-email" name="email" type="email" placeholder="Your Email" required>
+                        <label class="sr-only" for="contact-message">Your Message</label>
+                        <textarea id="contact-message" name="message" placeholder="Your Message" rows="5"
+                            required></textarea>
                         <button type="submit" class="btn-primary">Send Message</button>
+                        <p class="form-status" role="status" aria-live="polite"></p>
                     </form>
                     <div class="contact-info">
                         <div class="social-links">

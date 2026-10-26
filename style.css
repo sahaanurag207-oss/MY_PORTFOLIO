@@ -192,6 +192,18 @@ nav ul li a.active {
     border-color: var(--accent-color);
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
 /* Hero Section */
 .hero {
     min-height: 100vh;
@@ -353,7 +365,7 @@ nav ul li a.active {
 /* Skills Section */
 .skills-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2.5rem;
 }
 
@@ -460,7 +472,7 @@ nav ul li a.active {
 /* Projects Section */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
     gap: 2.5rem;
 }
 
@@ -525,6 +537,12 @@ nav ul li a.active {
     align-self: flex-start;
 }
 
+.project-link-unavailable {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
 .btn-project:hover {
     gap: 0.8rem;
     text-shadow: 0 0 10px var(--accent-glow-high);
@@ -552,7 +570,7 @@ nav ul li a.active {
 .certifications-grid,
 .awards-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
     gap: 2rem;
 }
 
@@ -610,6 +628,7 @@ nav ul li a.active {
 
 .contact-form input,
 .contact-form textarea {
+    min-width: 0;
     background: rgba(255, 255, 255, 0.03);
     border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 1.25rem 1.75rem;
@@ -626,6 +645,12 @@ nav ul li a.active {
     border-color: var(--accent-color);
     background: rgba(255, 255, 255, 0.07);
     box-shadow: 0 0 15px var(--accent-glow-low);
+}
+
+.form-status {
+    min-height: 1.5em;
+    color: var(--text-muted);
+    font-size: 0.95rem;
 }
 
 .contact-info {
@@ -649,22 +674,37 @@ nav ul li a.active {
 
 /* Responsive Styles */
 @media (max-width: 992px) {
+    header {
+        position: sticky;
+        background: var(--nav-bg);
+    }
+
     .nav-container {
         flex-direction: column;
         height: auto;
-        padding: 1.5rem 0;
+        padding: 0.75rem 2rem;
+    }
+
+    nav {
+        width: 100%;
     }
 
     nav ul {
-        gap: 1.5rem;
+        gap: 0.4rem;
         flex-wrap: wrap;
         justify-content: center;
-        margin-top: 1.5rem;
+        margin-top: 0.5rem;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 0.45rem 0.8rem;
+        font-size: 0.85rem;
     }
 
     .hero-container,
     .contact-container {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         text-align: center;
         gap: 4rem;
     }
@@ -700,5 +740,28 @@ nav ul li a.active {
 
     .timeline-dot {
         left: calc(-2rem - 6px);
+    }
+}
+
+@media (max-width: 576px) {
+    .nav-container {
+        padding: 0.65rem 1rem;
+    }
+
+    nav ul {
+        gap: 0.2rem;
+    }
+
+    nav ul li a {
+        padding: 0.4rem 0.55rem;
+        font-size: 0.78rem;
+    }
+
+    .hero {
+        padding-top: 2rem;
+    }
+
+    .section-title {
+        font-size: 2rem;
     }
 }
