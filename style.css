@@ -512,11 +512,20 @@ nav ul li a.active {
 }
 
 .project-tech {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.project-tech span {
+    padding: 0.3rem 0.7rem;
+    border: 1px solid var(--accent-glow);
+    border-radius: 999px;
+    background: var(--accent-glow-low);
+    color: var(--accent-hover);
+    font-size: 0.78rem;
     font-weight: 600;
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 0.02em;
 }
 
 .project-desc {
