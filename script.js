@@ -11,6 +11,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
+    const menuToggle = document.querySelector('.menu-toggle');
+    const navigation = document.querySelector('#site-navigation');
+
+    const setMenuOpen = (isOpen) => {
+        menuToggle.setAttribute('aria-expanded', String(isOpen));
+        menuToggle.setAttribute('aria-label', isOpen ? 'Close navigation menu' : 'Open navigation menu');
+        navigation.classList.toggle('is-open', isOpen);
+    };
+
+    menuToggle.addEventListener('click', () => {
+        setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
+    });
+
+    navigation.addEventListener('click', (event) => {
+        if (event.target.closest('a')) {
+            setMenuOpen(false);
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
+            setMenuOpen(false);
+            menuToggle.focus();
+        }
+    });
+
+    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
+        if (event.matches) {
+            setMenuOpen(false);
+        }
+    });
 
     window.addEventListener('scroll', () => {
         let current = '';
@@ -66,9 +97,12 @@ document.addEventListener('DOMContentLoaded', () => {
         link.addEventListener('click', (e) => {
             e.preventDefault();
             const targetId = link.getAttribute('href');
-            const targetHeight = document.querySelector(targetId).offsetTop;
+            const target = document.querySelector(targetId);
+            if (!target) {
+                return;
+            }
             window.scrollTo({
-                top: targetHeight - 70,
+                top: target.offsetTop - 70,
                 behavior: 'smooth'
             });
         });

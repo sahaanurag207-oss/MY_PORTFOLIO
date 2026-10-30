@@ -45,5 +45,6 @@ A clean, modern, and responsive personal portfolio website built to showcase sof
 ├── style.css                                # Theme, layout, and responsive styles
 ├── script.js                                # Navigation, reveal effects, and contact form
 ├── favicon.svg                              # Initials-based browser icon
+├── Anurag_Saha_Resume.pdf                   # Downloadable resume
 ├── me.jpg                                   # Existing photo asset (not used in the hero)
 └── spiderman-miles-morales-dark-4k-hp-480x800.jpg # Additional image asset
