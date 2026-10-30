@@ -1,8 +1,8 @@
 :root {
-    --bg-color: #0b1018;
+    --bg-color: #080d14;
     --text-color: #edf2f8;
     --text-muted: #a2adbb;
-    --nav-bg: rgba(11, 16, 24, 0.94);
+    --nav-bg: rgba(8, 13, 20, 0.94);
     --container-width: 1200px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -97,7 +97,7 @@ html {
 }
 
 body {
-    background: radial-gradient(ellipse at 50% -20%, #172338 0%, var(--bg-color) 58%);
+    background: radial-gradient(ellipse at 50% -20%, #131e30 0%, var(--bg-color) 58%);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
@@ -208,7 +208,7 @@ nav ul li a.active {
     gap: 5px;
     border: 1px solid rgba(202, 217, 239, 0.18);
     border-radius: 10px;
-    background: rgba(18, 26, 38, 0.88);
+    background: rgba(15, 22, 33, 0.88);
     color: var(--text-color);
     cursor: pointer;
 }
@@ -292,7 +292,7 @@ textarea:focus-visible {
     border: 1px solid rgba(202, 217, 239, 0.16);
     background:
         radial-gradient(ellipse at 50% 35%, rgba(116, 174, 245, 0.18), transparent 46%),
-        linear-gradient(145deg, #182438, #101722 72%);
+        linear-gradient(145deg, #152033, #0d131d 72%);
     box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
     animation: fadeInScale 0.8s ease-out;
 }
@@ -482,7 +482,7 @@ textarea:focus-visible {
     align-items: center;
     justify-content: center;
     gap: 0.75rem;
-    background: rgba(18, 26, 38, 0.78);
+    background: rgba(15, 22, 33, 0.78);
     border: 1px solid rgba(202, 217, 239, 0.1);
     padding: 1rem 1.1rem;
     border-radius: 12px;
@@ -492,7 +492,7 @@ textarea:focus-visible {
 
 .skill-card:hover {
     transform: translateY(-2px);
-    background: rgba(24, 35, 51, 0.9);
+    background: rgba(21, 31, 45, 0.9);
     border-color: rgba(116, 174, 245, 0.42);
 }
 
@@ -545,7 +545,7 @@ textarea:focus-visible {
 }
 
 .timeline-content {
-    background: rgba(18, 26, 38, 0.74);
+    background: rgba(15, 22, 33, 0.74);
     padding: 2rem;
     border-radius: 16px;
     border: 1px solid rgba(202, 217, 239, 0.1);
@@ -556,7 +556,7 @@ textarea:focus-visible {
 .timeline-content:hover {
     border-color: rgba(116, 174, 245, 0.35);
     transform: translateX(4px);
-    background: rgba(22, 32, 46, 0.92);
+    background: rgba(19, 28, 41, 0.92);
 }
 
 .timeline-date {
@@ -585,7 +585,7 @@ textarea:focus-visible {
 }
 
 .project-card {
-    background: rgba(18, 26, 38, 0.78);
+    background: rgba(15, 22, 33, 0.78);
     border: 1px solid rgba(202, 217, 239, 0.1);
     padding: 1.75rem;
     border-radius: 16px;
@@ -598,7 +598,7 @@ textarea:focus-visible {
 
 .project-card:hover {
     transform: translateY(-3px);
-    background: rgba(22, 32, 46, 0.94);
+    background: rgba(19, 28, 41, 0.94);
     border-color: rgba(116, 174, 245, 0.36);
     box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
 }
@@ -701,7 +701,7 @@ textarea:focus-visible {
 
 .cert-card,
 .award-card {
-    background: rgba(18, 26, 38, 0.78);
+    background: rgba(15, 22, 33, 0.78);
     border: 1px solid rgba(202, 217, 239, 0.1);
     padding: 2rem;
     border-radius: 16px;
@@ -713,7 +713,7 @@ textarea:focus-visible {
 .cert-card:hover,
 .award-card:hover {
     transform: translateY(-3px);
-    background: rgba(22, 32, 46, 0.94);
+    background: rgba(19, 28, 41, 0.94);
     border-color: rgba(116, 174, 245, 0.36);
 }
 
@@ -754,7 +754,7 @@ textarea:focus-visible {
 .contact-form input,
 .contact-form textarea {
     min-width: 0;
-    background: rgba(18, 26, 38, 0.78);
+    background: rgba(15, 22, 33, 0.78);
     border: 1px solid rgba(202, 217, 239, 0.14);
     padding: 1rem 1.15rem;
     border-radius: 10px;
@@ -768,7 +768,7 @@ textarea:focus-visible {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    background: rgba(22, 32, 46, 0.94);
+    background: rgba(19, 28, 41, 0.94);
     box-shadow: 0 0 15px var(--accent-glow-low);
 }
 
