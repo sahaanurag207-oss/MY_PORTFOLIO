@@ -4,9 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anurag | Portfolio</title>
-    <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="me.jpg">
+    <title>Anurag Saha | Software Developer</title>
+    <meta name="description"
+        content="Anurag Saha is a software developer focused on responsive web applications, C++, and practical software projects.">
+    <meta name="theme-color" content="#0b1018">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -23,7 +25,7 @@
     <div class="bg-glow glow-3"></div>
     <header>
         <div class="container nav-container">
-            <div class="logo">Anurag</div>
+            <a class="logo" href="#home" aria-label="Anurag Saha, home">AS<span>.</span></a>
             <nav>
                 <ul>
                     <li><a href="#home" class="active">Home</a></li>
@@ -43,21 +45,28 @@
         <section id="home" class="hero">
             <div class="container hero-container">
                 <div class="hero-image-wrapper">
-                    <div class="image-backdrop"></div>
-                    <img src="me.jpg" alt="Portrait of Anurag Saha" class="hero-img">
+                    <div class="hero-monogram" aria-hidden="true">
+                        <span class="hero-monogram-mark">AS</span>
+                        <span class="hero-monogram-caption">ANURAG SAHA</span>
+                    </div>
                 </div>
                 <div class="hero-content">
-                    <h1 class="hero-title">Hi, It's <span>Anurag</span></h1>
-                    <h2 class="hero-subtitle">I'm a <span>Software Developer</span></h2>
-                    <p class="hero-description">I am an aspiring Software Developer with a good understanding of Data
-                        Structures and Algorithms in C++, which helps me write efficient and optimized code. I have
-                        hands-on experience in building practical web applications, which has strengthened my
-                        problem-solving and development skills.</p>
+                    <p class="hero-eyebrow">SOFTWARE DEVELOPER</p>
+                    <h1 class="hero-title">Anurag <span>Saha</span></h1>
+                    <h2 class="hero-subtitle">Think. Design. Build. Repeat</h2>
+                    <p class="hero-description">Software Developer focused on building responsive web applications and
+                        solving problems through efficient Data Structures and Algorithms in C++. I enjoy turning
+                        ideas into practical projects and learning through hands-on development.</p>
+                    <div class="hero-actions">
+                        <a class="btn-primary" href="#projects">Explore Projects</a>
+                        <a class="btn-secondary" href="#contact">Get in Touch</a>
+                    </div>
                     <div class="social-links">
                         <a href="https://www.linkedin.com/in/anurag-saha-5b8062203/" target="_blank"
-                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                            rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"
+                                aria-hidden="true"></i></a>
                         <a href="https://github.com/sahaanurag207-oss" target="_blank" rel="noopener noreferrer"
-                            aria-label="GitHub"><i class="fab fa-github"></i></a>
+                            aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -66,7 +75,7 @@
         <!-- Skills Section -->
         <section id="skills" class="skills section-padding">
             <div class="container">
-                <h2 class="section-title">My <span>Skills</span></h2>
+                <h2 class="section-title">Technical <span>Skills</span></h2>
                 <div class="skills-grid">
                     <div class="skill-card">
                         <i class="fas fa-code"></i>
@@ -107,15 +116,14 @@
         <!-- Education Section -->
         <section id="education" class="education section-padding">
             <div class="container">
-                <h2 class="section-title">My <span>Education</span></h2>
+                <h2 class="section-title"><span>Education</span></h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <h3>Jalpaiguri Government Engineering College</h3>
                             <p class="timeline-date">Aug 2024 - Present</p>
-                            <p>Bachelor of Technology in Information Technology, Currently pursuing bachelor of
-                                technology</p>
+                            <p>Bachelor of Technology in Information Technology</p>
                             <p><strong>1st Year - 8.39 YGPA</strong></p>
                             <p><strong>2nd Year - 9.50 YGPA</strong></p>
                         </div>
@@ -125,8 +133,7 @@
                         <div class="timeline-content">
                             <h3>Ramakrishna Mission Vidyabhavan (H.S)</h3>
                             <p class="timeline-date">Aug 2017 - Mar 2023</p>
-                            <p>I had completed my secondary and higher secondary education from Ramakrishna Mission
-                                Vidyabhavan with <strong>Grade - A</strong>.</p>
+                            <p>Completed Secondary and Higher Secondary Education with <strong>Grade A</strong>.</p>
                         </div>
                     </div>
                 </div>
@@ -136,7 +143,7 @@
         <!-- Experience Section -->
         <section id="experience" class="experience section-padding">
             <div class="container">
-                <h2 class="section-title">My <span>Experience</span></h2>
+                <h2 class="section-title"><span>Experience</span></h2>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
@@ -150,11 +157,12 @@
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
-                            <h3>ZERO_LOGON | MEMBER </h3>
+                            <h3>ZERO_LOGON | Member</h3>
                             <p class="timeline-date">2023 - 2024</p>
-                            <p>Collaborated with team members to analyze problems, develop practical solutions, and
-                                improve team outcomes. Continued building my skills through hands-on learning and
-                                feedback.</p>
+                            <p>Built practical cybersecurity skills with Linux and Bash, explored password auditing
+                                with John the Ripper, and took part in CTF challenges. Our team placed 8th in the
+                                college JCTF competition. Shared what I learned through peer teaching and
+                                collaborative problem-solving.</p>
                         </div>
                     </div>
                 </div>
@@ -167,71 +175,91 @@
                 <h2 class="section-title">My <span>Projects</span></h2>
                 <div class="projects-grid">
                     <div class="project-card">
-                        <div class="project-icon"><i class="fas fa-store"></i></div>
+                        <div class="project-icon"><i class="fas fa-store" aria-hidden="true"></i></div>
                         <h3>Fresh Store</h3>
                         <div class="project-tech" aria-label="Technologies used">
                             <span>HTML</span><span>CSS</span><span>JavaScript</span>
                         </div>
-                        <p class="project-desc">A responsive grocery e-commerce experience with product categories,
-                            a shopping cart that saves items in local storage, and a checkout flow.</p>
+                        <ul class="project-details">
+                            <li>Persists shopping-cart items in local storage across visits.</li>
+                            <li>Combines product categories with a responsive checkout flow.</li>
+                        </ul>
                         <a href="https://fresh-store-jade.vercel.app/" target="_blank" rel="noopener noreferrer"
-                            class="btn-project">View Project<i class="fas fa-external-link-alt"></i></a>
+                            class="btn-project">Live Demo<i class="fas fa-external-link-alt"
+                                aria-hidden="true"></i></a>
                     </div>
                     <div class="project-card">
-                        <div class="project-icon"><i class="fas fa-globe"></i></div>
+                        <div class="project-icon"><i class="fas fa-globe" aria-hidden="true"></i></div>
                         <h3>Sandsight</h3>
                         <div class="project-tech" aria-label="Technologies used">
                             <span>HTML</span><span>CSS</span><span>JavaScript</span>
                         </div>
-                        <p class="project-desc">Developed a responsive website for SIH Problem Statement 37. Designed UI
-                            sections to clearly present the problem statement, solution approach, and environmental
-                            impact. Explained a low-cost camera-based automated sand grain size mapping system in a team
-                            with five members.</p>
+                        <ul class="project-details">
+                            <li>Responsive SIH project site presenting the problem, proposed solution, and impact.</li>
+                            <li>Explains a low-cost camera-based sand grain size mapping concept developed with a
+                                five-member team.</li>
+                        </ul>
                         <a href="https://ayankarak.github.io/SIH-graineye/" target="_blank" rel="noopener noreferrer"
-                            class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
+                            class="btn-project">Live Demo <i class="fas fa-external-link-alt"
+                                aria-hidden="true"></i></a>
                     </div>
                     <div class="project-card">
-                        <div class="project-icon"><i class="fab fa-python"></i></div>
-                        <h3>Currency Converter</h3>
-                        <div class="project-tech" aria-label="Technologies used">
-                            <span>Python</span><span>Exchange-rate API</span>
-                        </div>
-                        <p class="project-desc">Python-based currency converter that converts amounts using real-time
-                            exchange rates via API. Implemented user input handling, conditional logic, and functions
-                            for accurate conversions.</p>
-                        <span class="project-link-unavailable">Project link not available</span>
-                    </div>
-                    <div class="project-card">
-                        <div class="project-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="project-icon"><i class="fas fa-calculator" aria-hidden="true"></i></div>
                         <h3>Calculator</h3>
                         <div class="project-tech" aria-label="Technologies used">
                             <span>HTML</span><span>CSS</span><span>JavaScript</span>
                         </div>
-                        <p class="project-desc">A browser-based scientific calculator with an interactive interface
-                            and a sleek glassmorphism design, built with HTML, CSS, and JavaScript.</p>
+                        <ul class="project-details">
+                            <li>Browser-based scientific calculator built with HTML, CSS, and JavaScript.</li>
+                            <li>Pairs an interactive calculator interface with a glassmorphism visual design.</li>
+                        </ul>
                         <a href="https://calculator-app-sand-nine.vercel.app/" target="_blank" rel="noopener noreferrer"
-                            class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
+                            class="btn-project">Live Demo <i class="fas fa-external-link-alt"
+                                aria-hidden="true"></i></a>
                     </div>
                     <div class="project-card">
-                        <div class="project-icon"><i class="fas fa-ticket"></i></div>
-                        <h3>Ticket Booking System</h3>
+                        <div class="project-icon"><i class="fas fa-film" aria-hidden="true"></i></div>
+                        <h3>Movie Search Engine</h3>
                         <div class="project-tech" aria-label="Technologies used">
-                            <span>HTML</span><span>CSS</span><span>JavaScript</span>
+                            <span>React</span><span>Tailwind CSS</span><span>Movie API</span>
                         </div>
-                        <p class="project-desc">A modern museum ticketing interface that presents event details and
-                            lets visitors generate a digital ticket.</p>
-                        <span class="project-link-unavailable">Project link not available</span>
+                        <ul class="project-details">
+                            <li>Debounced movie search with API-powered details, ratings, and pagination.</li>
+                            <li>Saves a favorites list in local storage for later visits.</li>
+                        </ul>
+                        <a href="https://github.com/sahaanurag207-oss/Movie-Search-Engine" target="_blank"
+                            rel="noopener noreferrer" class="btn-project">GitHub Repository
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
                     </div>
                     <div class="project-card">
-                        <div class="project-icon"><i class="fas fa-moon"></i></div>
+                        <div class="project-icon"><i class="fas fa-brain" aria-hidden="true"></i></div>
+                        <h3>Skin Lesion Classification</h3>
+                        <div class="project-tech" aria-label="Technologies used">
+                            <span>Python</span><span>PyTorch</span><span>ConvNeXt</span>
+                        </div>
+                        <ul class="project-details">
+                            <li>Classifies seven lesion categories with a ConvNeXt model trained on HAM10000.</li>
+                            <li>Uses lesion-grouped splits and image augmentation; reports 87.98% test accuracy on its
+                                evaluation split.</li>
+                        </ul>
+                        <p class="project-note">Academic experiment; not a medical diagnostic tool.</p>
+                        <a href="https://github.com/sahaanurag207-oss/SKIN-DISEASE-CLASSIFICATION-FROM-IMAGES"
+                            target="_blank" rel="noopener noreferrer" class="btn-project">GitHub Repository
+                            <i class="fas fa-external-link-alt" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="project-card">
+                        <div class="project-icon"><i class="fas fa-moon" aria-hidden="true"></i></div>
                         <h3>Moon Crescent</h3>
                         <div class="project-tech" aria-label="Technologies used">
                             <span>HTML</span><span>CSS</span>
                         </div>
-                        <p class="project-desc">A lightweight crescent-moon animation built with pure HTML and CSS,
-                            showcasing CSS-based visual effects without JavaScript.</p>
+                        <ul class="project-details">
+                            <li>Creates a crescent-moon visual effect with CSS.</li>
+                            <li>Uses no JavaScript, keeping the animation lightweight.</li>
+                        </ul>
                         <a href="https://moon-mauve-ten.vercel.app/" target="_blank" rel="noopener noreferrer"
-                            class="btn-project">View Project <i class="fas fa-external-link-alt"></i></a>
+                            class="btn-project">Live Demo <i class="fas fa-external-link-alt"
+                                aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -240,7 +268,7 @@
         <!-- Certifications Section -->
         <section id="certifications" class="certifications section-padding">
             <div class="container">
-                <h2 class="section-title">My <span>Certifications</span></h2>
+                <h2 class="section-title"><span>Certifications</span></h2>
                 <div class="certifications-grid">
                     <div class="cert-card">
                         <i class="fab fa-google"></i>
@@ -264,26 +292,29 @@
         <!-- Awards & Activities Section -->
         <section id="awards" class="awards section-padding">
             <div class="container">
-                <h2 class="section-title">Awards & <span>Activities</span></h2>
+                <h2 class="section-title">Profiles & <span>Community</span></h2>
                 <div class="awards-grid">
                     <div class="award-card">
                         <i class="fas fa-trophy"></i>
                         <h3>LeetCode</h3>
-                        <p>Solved 100+ Problems & 1490 Contest Rating</p>
+                        <p>Competitive programming practice; visit my profile for current stats.</p>
                         <a href="https://leetcode.com/u/sahaanurag456/" target="_blank" rel="noopener noreferrer"
-                            class="award-link">Checkout Profile <i class="#"></i></a>
+                            class="award-link">View Profile</a>
                     </div>
                     <div class="award-card">
                         <i class="fas fa-terminal"></i>
                         <h3>Codeforces</h3>
-                        <p>1086 Rating and growing</p>
+                        <p>Competitive programming practice; visit my profile for current stats.</p>
                         <a href="https://codeforces.com/profile/sahaanurag207" target="_blank" rel="noopener noreferrer"
-                            class="award-link">Checkout Profile <i class="#"></i></a>
+                            class="award-link">View Profile</a>
                     </div>
                     <div class="award-card">
                         <i class="fas fa-users"></i>
                         <h3>ISTE Member</h3>
                         <p>Student Member at Indian Society For Technical Education</p>
+                        <a href="https://drive.google.com/file/d/1_ZNcFZCYHjRjElJ_STAKpma5cuj4f6QQ/view?usp=drivesdk"
+                            target="_blank" rel="noopener noreferrer" class="award-link">View Certificate
+                        </a>
                     </div>
                 </div>
             </div>
@@ -292,7 +323,7 @@
         <!-- Contact Section -->
         <section id="contact" class="contact section-padding">
             <div class="container">
-                <h2 class="section-title">Get In <span>Touch</span></h2>
+                <h2 class="section-title">Let's <span>Connect</span></h2>
                 <div class="contact-container">
                     <form class="contact-form">
                         <label class="sr-only" for="contact-name">Your Name</label>
@@ -308,11 +339,12 @@
                     <div class="contact-info">
                         <div class="social-links">
                             <a href="https://www.linkedin.com/in/anurag-saha-5b8062203/" target="_blank"
-                                rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                                rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"
+                                    aria-hidden="true"></i></a>
                             <a href="https://github.com/sahaanurag207-oss" target="_blank" rel="noopener noreferrer"
-                                aria-label="GitHub"><i class="fab fa-github"></i></a>
-                            <a href="mailto:sahaanurag207@gmail.com" aria-label="Email"><i
-                                    class="fas fa-envelope"></i></a>
+                                aria-label="GitHub"><i class="fab fa-github" aria-hidden="true"></i></a>
+                            <a href="mailto:sahaanurag207@gmail.com" aria-label="Email"><i class="fas fa-envelope"
+                                    aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
