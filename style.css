@@ -1,17 +1,22 @@
 :root {
-    --bg-color: #080d14;
+    --bg-color: #02070d;
+    --bg-color-2: #07121d;
+    --panel-bg: rgba(11, 18, 27, 0.92);
+    --panel-soft: rgba(14, 22, 33, 0.88);
     --text-color: #edf2f8;
-    --text-muted: #a2adbb;
-    --nav-bg: rgba(8, 13, 20, 0.94);
+    --text-muted: #9aa9ba;
+    --nav-bg: rgba(4, 9, 15, 0.96);
     --container-width: 1200px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     /* Blue Theme */
-    --accent-color: #74aef5;
-    --accent-hover: #a1c9ff;
-    --accent-glow: rgba(116, 174, 245, 0.2);
-    --accent-glow-low: rgba(116, 174, 245, 0.08);
-    --accent-glow-high: rgba(116, 174, 245, 0.28);
+    --accent-color: #7bb7ff;
+    --accent-hover: #b9d9ff;
+    --accent-glow: rgba(123, 183, 255, 0.24);
+    --accent-glow-low: rgba(123, 183, 255, 0.09);
+    --accent-glow-high: rgba(123, 183, 255, 0.32);
+    --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.28);
+    --shadow-accent: 0 16px 32px rgba(123, 183, 255, 0.15);
 }
 
 /* Background Glow Blobs */
@@ -97,11 +102,16 @@ html {
 }
 
 body {
-    background: radial-gradient(ellipse at 50% -20%, #131e30 0%, var(--bg-color) 58%);
+    background: radial-gradient(ellipse at 50% -20%, #0d1624 0%, #050b12 38%, var(--bg-color) 72%);
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: clip;
+}
+
+::selection {
+    background: rgba(123, 183, 255, 0.22);
+    color: var(--text-color);
 }
 
 ul {
@@ -183,6 +193,7 @@ nav ul li a {
     padding: 0.55rem 0.85rem;
     border-radius: 10px;
     border: 1px solid transparent;
+    background: rgba(10, 16, 24, 0.28);
 }
 
 nav ul li a:hover,
@@ -289,11 +300,11 @@ textarea:focus-visible {
     gap: 0.75rem;
     overflow: hidden;
     border-radius: 22px;
-    border: 1px solid rgba(202, 217, 239, 0.16);
+    border: 1px solid rgba(202, 217, 239, 0.12);
     background:
-        radial-gradient(ellipse at 50% 35%, rgba(116, 174, 245, 0.18), transparent 46%),
-        linear-gradient(145deg, #152033, #0d131d 72%);
-    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.3);
+        radial-gradient(ellipse at 50% 35%, rgba(123, 183, 255, 0.16), transparent 46%),
+        linear-gradient(145deg, #121d2d, #090f18 72%);
+    box-shadow: var(--shadow-soft), inset 0 1px 0 rgba(255, 255, 255, 0.02);
     animation: fadeInScale 0.8s ease-out;
 }
 
@@ -413,17 +424,19 @@ textarea:focus-visible {
     padding: 0.85rem 1.25rem;
     border: 1px solid var(--accent-color);
     border-radius: 10px;
-    color: #0b1018;
-    background: var(--accent-color);
-    font-weight: 600;
+    color: #050b12;
+    background: linear-gradient(135deg, var(--accent-color), #a6cffd);
+    font-weight: 700;
     transition: var(--transition);
     cursor: pointer;
+    box-shadow: var(--shadow-accent);
 }
 
 .btn-primary:hover {
-    background: var(--accent-hover);
+    background: linear-gradient(135deg, var(--accent-hover), #d7ebff);
     border-color: var(--accent-hover);
-    box-shadow: 0 8px 24px rgba(116, 174, 245, 0.2);
+    box-shadow: 0 14px 26px rgba(123, 183, 255, 0.22);
+    transform: translateY(-1px);
 }
 
 .btn-secondary {
@@ -431,15 +444,18 @@ textarea:focus-visible {
     align-items: center;
     justify-content: center;
     padding: 0.85rem 1.25rem;
-    border: 1px solid rgba(202, 217, 239, 0.2);
+    border: 1px solid rgba(202, 217, 239, 0.18);
     border-radius: 10px;
     color: var(--text-color);
     font-weight: 600;
+    background: rgba(10, 16, 24, 0.56);
 }
 
 .btn-secondary:hover {
-    border-color: var(--accent-color);
+    border-color: rgba(123, 183, 255, 0.7);
     color: var(--accent-hover);
+    background: rgba(123, 183, 255, 0.05);
+    box-shadow: inset 0 0 0 1px rgba(123, 183, 255, 0.08);
 }
 
 /* Section Common Styles */
@@ -478,18 +494,20 @@ textarea:focus-visible {
 }
 
 .skill-group {
-    background: rgba(15, 22, 33, 0.78);
-    border: 1px solid rgba(202, 217, 239, 0.1);
+    background: var(--panel-soft);
+    border: 1px solid rgba(202, 217, 239, 0.08);
     padding: 1.5rem;
     border-radius: 16px;
     transition: var(--transition);
     backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-soft);
 }
 
 .skill-group:hover {
     transform: translateY(-3px);
-    background: rgba(21, 31, 45, 0.9);
-    border-color: rgba(116, 174, 245, 0.42);
+    background: rgba(16, 24, 35, 0.96);
+    border-color: rgba(123, 183, 255, 0.42);
+    box-shadow: var(--shadow-accent);
 }
 
 .skill-group-title {
@@ -512,10 +530,10 @@ textarea:focus-visible {
 }
 
 .skill-list li {
-    padding: 0.4rem 0.75rem;
-    border: 1px solid rgba(202, 217, 239, 0.12);
+    padding: 0.42rem 0.8rem;
+    border: 1px solid rgba(123, 183, 255, 0.14);
     border-radius: 999px;
-    background: rgba(202, 217, 239, 0.045);
+    background: rgba(123, 183, 255, 0.06);
     color: var(--text-muted);
     font-size: 0.9rem;
     font-weight: 500;
@@ -585,18 +603,20 @@ textarea:focus-visible {
 }
 
 .timeline-content {
-    background: rgba(15, 22, 33, 0.74);
+    background: var(--panel-bg);
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid rgba(202, 217, 239, 0.1);
+    border: 1px solid rgba(202, 217, 239, 0.08);
     transition: var(--transition);
     backdrop-filter: blur(5px);
+    box-shadow: var(--shadow-soft);
 }
 
 .timeline-content:hover {
-    border-color: rgba(116, 174, 245, 0.35);
+    border-color: rgba(123, 183, 255, 0.35);
     transform: translateX(4px);
-    background: rgba(19, 28, 41, 0.92);
+    background: rgba(17, 25, 36, 0.96);
+    box-shadow: var(--shadow-accent);
 }
 
 .timeline-date {
@@ -617,6 +637,17 @@ textarea:focus-visible {
     font-size: 1.05rem;
 }
 
+.highlight-badge {
+    display: inline-block;
+    margin: 0.5rem 0 0.85rem;
+    padding: 0.5rem 0.8rem;
+    border-radius: 10px;
+    background: rgba(116, 174, 245, 0.1);
+    border: 1px solid rgba(116, 174, 245, 0.28);
+    color: var(--text-color);
+    font-size: 0.88rem;
+}
+
 /* Projects Section */
 .projects-grid {
     display: grid;
@@ -625,8 +656,8 @@ textarea:focus-visible {
 }
 
 .project-card {
-    background: rgba(15, 22, 33, 0.78);
-    border: 1px solid rgba(202, 217, 239, 0.1);
+    background: var(--panel-bg);
+    border: 1px solid rgba(202, 217, 239, 0.08);
     padding: 1.75rem;
     border-radius: 16px;
     transition: var(--transition);
@@ -634,13 +665,14 @@ textarea:focus-visible {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
+    box-shadow: var(--shadow-soft);
 }
 
 .project-card:hover {
     transform: translateY(-3px);
-    background: rgba(19, 28, 41, 0.94);
-    border-color: rgba(116, 174, 245, 0.36);
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.2);
+    background: rgba(17, 25, 36, 0.98);
+    border-color: rgba(123, 183, 255, 0.42);
+    box-shadow: var(--shadow-accent);
 }
 
 .project-icon {
@@ -661,10 +693,10 @@ textarea:focus-visible {
 
 .project-tech span {
     padding: 0.25rem 0.55rem;
-    border: 1px solid rgba(202, 217, 239, 0.12);
+    border: 1px solid rgba(123, 183, 255, 0.14);
     border-radius: 7px;
-    background: rgba(202, 217, 239, 0.05);
-    color: #c3cedb;
+    background: rgba(123, 183, 255, 0.06);
+    color: #d8e7ff;
     font-size: 0.74rem;
     font-weight: 600;
     letter-spacing: 0.02em;
@@ -741,20 +773,22 @@ textarea:focus-visible {
 
 .cert-card,
 .award-card {
-    background: rgba(15, 22, 33, 0.78);
-    border: 1px solid rgba(202, 217, 239, 0.1);
+    background: var(--panel-soft);
+    border: 1px solid rgba(202, 217, 239, 0.08);
     padding: 2rem;
     border-radius: 16px;
     text-align: center;
     transition: var(--transition);
     backdrop-filter: blur(10px);
+    box-shadow: var(--shadow-soft);
 }
 
 .cert-card:hover,
 .award-card:hover {
     transform: translateY(-3px);
-    background: rgba(19, 28, 41, 0.94);
-    border-color: rgba(116, 174, 245, 0.36);
+    background: rgba(17, 25, 36, 0.98);
+    border-color: rgba(123, 183, 255, 0.42);
+    box-shadow: var(--shadow-accent);
 }
 
 .cert-card i,
@@ -794,14 +828,15 @@ textarea:focus-visible {
 .contact-form input,
 .contact-form textarea {
     min-width: 0;
-    background: rgba(15, 22, 33, 0.78);
-    border: 1px solid rgba(202, 217, 239, 0.14);
+    background: rgba(9, 15, 22, 0.9);
+    border: 1px solid rgba(202, 217, 239, 0.12);
     padding: 1rem 1.15rem;
     border-radius: 10px;
     color: var(--text-color);
     font-family: inherit;
     font-size: 1rem;
     transition: var(--transition);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
 }
 
 .contact-form input:focus,

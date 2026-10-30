@@ -13,17 +13,17 @@ A clean, modern, and responsive personal portfolio website built to showcase sof
 ## 📌 Sections & Overview
 
 - **Hero / About:** Introduction highlighting focus areas in C++, Data Structures & Algorithms, and web development.
-- **Skills:** Breakdown of core programming languages and tools (C++, Linux, Python, HTML, CSS).
+- **Skills:** Breakdown of core programming languages, frontend tools, and technical workflows (C++, Python, JavaScript, React, Node.js, Git, GitHub, PyTorch, Vercel).
 - **Education:** Academic history including B.Tech in Information Technology at Jalpaiguri Government Engineering College.
-- **Experience:** Mentorship at JYOTI and member activities at ZERO_LOGON.
-- **Projects:** Live demos and repository links for:
-  - *Fresh Store* (responsive grocery storefront with a persistent cart)
-  - *Sandsight* (SIH project site presenting a camera-based grain mapping concept)
+- **Experience:** Mentorship at JYOTI and active contributions in ZERO_LOGON, including a notable college JCTF placement.
+- **Projects:** Live demos and project links for:
+  - *Fresh Store* (responsive grocery storefront with persistent cart behavior)
+  - *Sandsight* (SIH landing page presenting a camera-based grain mapping concept)
   - *Calculator* (interactive scientific calculator with a glassmorphism interface)
-  - *Movie Search Engine* (React movie search, API-powered details, and saved favorites)
+  - *Movie Search Engine* (React app with debounced search, API data, and saved favorites)
   - *Skin Lesion Classification* (ConvNeXt-based academic image classification project; not a medical diagnostic tool)
   - *Moon Crescent* (CSS-only visual animation)
-- **Certifications & Courses:** Google Cloud Platform (GCP), Hack The Box, and Python learning.
+- **Certifications & Courses:** Google Cloud Platform learning, Hack The Box cybersecurity exploration, and Python programming development.
 - **Awards & Profiles:** Current profile links for LeetCode and Codeforces, plus community involvement (ISTE Member).
 - **Contact:** A contact form that opens a prefilled email draft, plus social links (GitHub, LinkedIn, Email).
 
