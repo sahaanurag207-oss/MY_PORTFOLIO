@@ -17,11 +17,11 @@ A clean, modern, and responsive personal portfolio website built to showcase sof
 - **Education:** Academic history including B.Tech in Information Technology at Jalpaiguri Government Engineering College.
 - **Experience:** Mentorship at JYOTI and active contributions in ZERO_LOGON, including a notable college JCTF placement.
 - **Projects:** Live demos and project links for:
+  - *Skin Lesion Classification* (ConvNeXt-based academic image classification project; 87.98% evaluation accuracy across seven lesion categories; not a medical diagnostic tool)
+  - *Movie Search Engine* (React app with debounced search, API data, and saved favorites)
   - *Fresh Store* (responsive grocery storefront with persistent cart behavior)
   - *Sandsight* (SIH landing page presenting a camera-based grain mapping concept)
   - *Calculator* (interactive scientific calculator with a glassmorphism interface)
-  - *Movie Search Engine* (React app with debounced search, API data, and saved favorites)
-  - *Skin Lesion Classification* (ConvNeXt-based academic image classification project; not a medical diagnostic tool)
   - *Moon Crescent* (CSS-only visual animation)
 - **Certifications & Courses:** Google Cloud Platform learning, Hack The Box cybersecurity exploration, and Python programming development.
 - **Awards & Profiles:** Current profile links for LeetCode and Codeforces, plus community involvement (ISTE Member).
@@ -45,6 +45,5 @@ A clean, modern, and responsive personal portfolio website built to showcase sof
 ├── style.css                                # Theme, layout, and responsive styles
 ├── script.js                                # Navigation, reveal effects, and contact form
 ├── favicon.svg                              # Initials-based browser icon
-├── Anurag_Saha_Resume.pdf                   # Downloadable resume
 ├── me.jpg                                   # Existing photo asset (not used in the hero)
 └── spiderman-miles-morales-dark-4k-hp-480x800.jpg # Additional image asset

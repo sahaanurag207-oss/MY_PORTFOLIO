@@ -721,6 +721,16 @@ textarea:focus-visible {
     font-style: italic;
 }
 
+.project-metric {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.project-metric strong {
+    color: var(--accent-hover);
+    font-size: 1.15rem;
+}
+
 .btn-project {
     display: inline-flex;
     align-items: center;
