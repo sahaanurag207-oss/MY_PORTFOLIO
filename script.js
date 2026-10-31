@@ -1,5 +1,31 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const cgpaOutput = document.querySelector('#current-cgpa');
+    if (cgpaOutput) {
+        // Add or remove semester entries here; the displayed CGPA recalculates from this list.
+        const semesters = [
+            { sgpa: 8.29, credits: 20 },
+            { sgpa: 8.49, credits: 20 },
+            { sgpa: 9.00, credits: 21 },
+            { sgpa: 10.00, credits: 21 }
+        ];
+        const validSemesters = semesters.length > 0 && semesters.every(({ sgpa, credits }) =>
+            Number.isFinite(sgpa) && sgpa >= 0 && sgpa <= 10 &&
+            Number.isFinite(credits) && credits > 0
+        );
+
+        if (!validSemesters) {
+            cgpaOutput.textContent = 'Unavailable';
+        } else {
+            const totalCredits = semesters.reduce((sum, semester) => sum + semester.credits, 0);
+            const weightedPoints = semesters.reduce(
+                (sum, semester) => sum + semester.sgpa * semester.credits,
+                0
+            );
+            cgpaOutput.textContent = (weightedPoints / totalCredits).toFixed(2);
+        }
+    }
+
     const header = document.querySelector('header');
     window.addEventListener('scroll', () => {
         if (window.scrollY > 50) {
