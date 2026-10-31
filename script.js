@@ -110,6 +110,17 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
+    window.requestAnimationFrame(() => {
+        revealElements.forEach(el => {
+            if (el.getBoundingClientRect().top <= window.innerHeight) {
+                el.classList.add('revealed');
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+                revealObserver.unobserve(el);
+            }
+        });
+    });
+
     window.addEventListener('scroll', () => {
         revealElements.forEach(el => {
             if (el.classList.contains('revealed')) {
