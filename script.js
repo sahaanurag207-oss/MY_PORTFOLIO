@@ -1,5 +1,43 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const selectionIncludesProtectedText = () => {
+        const selection = window.getSelection();
+        if (!selection || selection.isCollapsed) {
+            return false;
+        }
+
+        return Array.from(document.querySelectorAll('.no-copy')).some((element) =>
+            Array.from({ length: selection.rangeCount }, (_, index) =>
+                selection.getRangeAt(index).intersectsNode(element)
+            ).some(Boolean)
+        );
+    };
+
+    document.addEventListener('contextmenu', (event) => {
+        if (event.target instanceof Element && event.target.closest('.no-copy')) {
+            event.preventDefault();
+        }
+    });
+
+    document.addEventListener('copy', (event) => {
+        if (selectionIncludesProtectedText()) {
+            event.preventDefault();
+        }
+    });
+
+    document.addEventListener('cut', (event) => {
+        if (selectionIncludesProtectedText()) {
+            event.preventDefault();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'c' &&
+            selectionIncludesProtectedText()) {
+            event.preventDefault();
+        }
+    });
+
     const cgpaOutput = document.querySelector('#current-cgpa');
     if (cgpaOutput) {
         // Add or remove semester entries here; the displayed CGPA recalculates from this list.

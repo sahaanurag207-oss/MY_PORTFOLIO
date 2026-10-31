@@ -109,6 +109,13 @@ body {
     overflow-x: clip;
 }
 
+.no-copy {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
 ::selection {
     background: rgba(123, 183, 255, 0.22);
     color: var(--text-color);
@@ -854,6 +861,10 @@ textarea:focus-visible {
 
 .contact-form input,
 .contact-form textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
     min-width: 0;
     background: rgba(9, 15, 22, 0.9);
     border: 1px solid rgba(202, 217, 239, 0.12);
