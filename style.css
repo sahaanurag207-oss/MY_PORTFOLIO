@@ -425,7 +425,7 @@ textarea:focus-visible {
     border: 1px solid var(--accent-color);
     border-radius: 10px;
     color: #050b12;
-    background: linear-gradient(135deg, var(--accent-color), #a6cffd);
+    background: linear-gradient(135deg, var(--accent-color), #04346b);
     font-weight: 700;
     transition: var(--transition);
     cursor: pointer;
@@ -433,7 +433,7 @@ textarea:focus-visible {
 }
 
 .btn-primary:hover {
-    background: linear-gradient(135deg, var(--accent-hover), #d7ebff);
+    background: linear-gradient(135deg, var(--accent-hover), #2a5c8d);
     border-color: var(--accent-hover);
     box-shadow: 0 14px 26px rgba(123, 183, 255, 0.22);
     transform: translateY(-1px);
