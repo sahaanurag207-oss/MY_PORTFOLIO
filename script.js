@@ -53,13 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-<<<<<<< HEAD
-    const header = document.querySelector('header');
-    const sections = document.querySelectorAll('section');
-    const navLinks = document.querySelectorAll('nav ul li a');
-=======
     /* --- Mobile Navigation --- */
->>>>>>> b05983172cecc97d82963f53b58a4b2e5aaa3f81
     const menuToggle = document.querySelector('.menu-toggle');
     const navigation = document.querySelector('#site-navigation');
 
@@ -75,7 +69,9 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         navigation.addEventListener('click', (event) => {
-            if (event.target.closest('a')) setMenuOpen(false);
+            if (event.target instanceof Element && event.target.closest('a')) {
+                setMenuOpen(false);
+            }
         });
 
         document.addEventListener('keydown', (event) => {
@@ -90,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    /* --- Unified 120 FPS Scroll Handler (Header & Active Links) --- */
+    /* --- Scroll Handler (Header & Active Links) --- */
     const header = document.querySelector('header');
     const sections = Array.from(document.querySelectorAll('section[id]'));
     const navLinks = Array.from(document.querySelectorAll('nav ul li a'));
@@ -100,116 +96,38 @@ document.addEventListener('DOMContentLoaded', () => {
     const updateCachedOffsets = () => {
         cachedOffsets = sections.map(section => ({
             id: section.id,
-            top: section.offsetTop,
-            height: section.offsetHeight
+            top: section.offsetTop
         }));
     };
     updateCachedOffsets();
     window.addEventListener('resize', updateCachedOffsets, { passive: true });
 
-<<<<<<< HEAD
-    menuToggle.addEventListener('click', () => {
-        setMenuOpen(menuToggle.getAttribute('aria-expanded') !== 'true');
-    });
-
-    navigation.addEventListener('click', (event) => {
-        if (event.target.closest('a')) {
-            setMenuOpen(false);
-        }
-    });
-
-    document.addEventListener('keydown', (event) => {
-        if (event.key === 'Escape' && menuToggle.getAttribute('aria-expanded') === 'true') {
-            setMenuOpen(false);
-            menuToggle.focus();
-        }
-    });
-
-    window.matchMedia('(min-width: 768px)').addEventListener('change', (event) => {
-        if (event.matches) {
-            setMenuOpen(false);
-        }
-    });
-
+    let isScrollTicking = false;
     const updateScrollState = () => {
-        let current = '';
-        sections.forEach(section => {
-            if (window.scrollY >= section.offsetTop - 150) {
-                current = section.getAttribute('id');
-            }
-        });
+        const scrollY = window.scrollY;
+        const currentSection = cachedOffsets.reduce((currentId, section) =>
+            scrollY >= section.top - 160 ? section.id : currentId, ''
+        );
 
-        header.classList.toggle('header-scrolled', window.scrollY > 50);
+        if (header) {
+            header.classList.toggle('header-scrolled', scrollY > 50);
+        }
+
         navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
+            link.classList.toggle('active', link.getAttribute('href') === `#${currentSection}`);
         });
+        isScrollTicking = false;
     };
 
-    let scrollUpdateScheduled = false;
     window.addEventListener('scroll', () => {
-        if (scrollUpdateScheduled) {
-            return;
-        }
+        if (isScrollTicking) return;
 
-        scrollUpdateScheduled = true;
-        window.requestAnimationFrame(() => {
-            updateScrollState();
-            scrollUpdateScheduled = false;
-        });
+        isScrollTicking = true;
+        window.requestAnimationFrame(updateScrollState);
     }, { passive: true });
     updateScrollState();
-=======
-    let isScrollTicking = false;
-    window.addEventListener('scroll', () => {
-        if (!isScrollTicking) {
-            window.requestAnimationFrame(() => {
-                const scrollY = window.scrollY;
-
-                // 1. Header scroll class
-                if (header) {
-                    header.classList.toggle('header-scrolled', scrollY > 50);
-                }
->>>>>>> b05983172cecc97d82963f53b58a4b2e5aaa3f81
-
-                // 2. Active nav link tracking using cached positions
-                let currentId = '';
-                for (let i = 0; i < cachedOffsets.length; i++) {
-                    if (scrollY >= cachedOffsets[i].top - 160) {
-                        currentId = cachedOffsets[i].id;
-                    }
-                }
-
-                navLinks.forEach(link => {
-                    const href = link.getAttribute('href');
-                    link.classList.toggle('active', href && href.endsWith(`#${currentId}`));
-                });
-
-<<<<<<< HEAD
-    const revealElements = document.querySelectorAll('.section-title, .skill-card, .timeline-item, .project-card, .cert-card, .award-card, .contact-container');
-
-    revealElements.forEach(el => {
-        el.classList.add('reveal-on-scroll');
-        revealObserver.observe(el);
-    });
-
-    window.requestAnimationFrame(() => {
-        revealElements.forEach(el => {
-            if (el.getBoundingClientRect().top <= window.innerHeight) {
-                el.classList.add('revealed');
-                revealObserver.unobserve(el);
-            }
-        });
-    });
-
-=======
-                isScrollTicking = false;
-            });
-            isScrollTicking = true;
-        }
-    }, { passive: true });
 
     /* --- Smooth Navigation Anchors --- */
->>>>>>> b05983172cecc97d82963f53b58a4b2e5aaa3f81
     navLinks.forEach(link => {
         link.addEventListener('click', (e) => {
             const href = link.getAttribute('href');
@@ -240,11 +158,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     const revealElements = document.querySelectorAll(
-        '.section-title, .skill-card, .timeline-item, .project-card, .cert-card, .award-card, .contact-container'
+        '.section-title, .skill-group, .timeline-item, .project-card, .cert-card, .award-card, .contact-container'
     );
 
     revealElements.forEach(el => {
-        el.classList.add('reveal-item');
+        el.classList.add('reveal-on-scroll');
         revealObserver.observe(el);
     });
 
