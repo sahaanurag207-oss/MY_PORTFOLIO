@@ -65,14 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            header.classList.add('header-scrolled');
-        } else {
-            header.classList.remove('header-scrolled');
-        }
-    });
-
     const sections = document.querySelectorAll('section');
     const navLinks = document.querySelectorAll('nav ul li a');
     const menuToggle = document.querySelector('.menu-toggle');
@@ -107,23 +99,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    window.addEventListener('scroll', () => {
+    const updateScrollState = () => {
         let current = '';
         sections.forEach(section => {
-            const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 150)) {
+            if (window.scrollY >= section.offsetTop - 150) {
                 current = section.getAttribute('id');
             }
         });
 
+        header.classList.toggle('header-scrolled', window.scrollY > 50);
         navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href').includes(current)) {
-                link.classList.add('active');
-            }
+            link.classList.toggle('active', link.getAttribute('href') === `#${current}`);
         });
-    });
+    };
+
+    let scrollUpdateScheduled = false;
+    window.addEventListener('scroll', () => {
+        if (scrollUpdateScheduled) {
+            return;
+        }
+
+        scrollUpdateScheduled = true;
+        window.requestAnimationFrame(() => {
+            updateScrollState();
+            scrollUpdateScheduled = false;
+        });
+    }, { passive: true });
+    updateScrollState();
 
     const observerOptions = {
         threshold: 0.1,
@@ -142,9 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const revealElements = document.querySelectorAll('.section-title, .skill-card, .timeline-item, .project-card, .cert-card, .award-card, .contact-container');
 
     revealElements.forEach(el => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(20px)';
-        el.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+        el.classList.add('reveal-on-scroll');
         revealObserver.observe(el);
     });
 
@@ -152,18 +152,7 @@ document.addEventListener('DOMContentLoaded', () => {
         revealElements.forEach(el => {
             if (el.getBoundingClientRect().top <= window.innerHeight) {
                 el.classList.add('revealed');
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
                 revealObserver.unobserve(el);
-            }
-        });
-    });
-
-    window.addEventListener('scroll', () => {
-        revealElements.forEach(el => {
-            if (el.classList.contains('revealed')) {
-                el.style.opacity = '1';
-                el.style.transform = 'translateY(0)';
             }
         });
     });

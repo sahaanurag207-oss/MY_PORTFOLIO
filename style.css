@@ -26,10 +26,21 @@
     height: 600px;
     background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
     opacity: 0.05;
-    filter: blur(120px);
     z-index: -1;
     pointer-events: none;
     border-radius: 50%;
+}
+
+.reveal-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s cubic-bezier(0.4, 0, 0.2, 1),
+        transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal-on-scroll.revealed {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .glow-1 {
