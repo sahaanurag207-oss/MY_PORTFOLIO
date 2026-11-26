@@ -662,10 +662,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = formData.get('message');
             const recipient = emailLink.getAttribute('href').slice('mailto:'.length);
             const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}
-Email: ${email}
-
-${message}`);
+            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
 
             if (status) {
                 status.textContent = `Your email app should open with your message ready to send. If it doesn't, email ${recipient}.`;
