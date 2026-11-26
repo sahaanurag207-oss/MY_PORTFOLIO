@@ -3,20 +3,20 @@ document.addEventListener('DOMContentLoaded', () => {
     /* --- DarkVeil WebGL2 Background --- */
     (() => {
         const settings = {
-            color: '#7bb7ff',
-            speed: 0.5,
+            color: '#3b82f6',
+            speed: 0.6,
             scale: 1,
             rotation: 0,
             flow: 1,
-            warp: 0,
+            warp: 0.15,
             variation: 0,
-            brightness: 0.85,
-            sheen: 0.25,
-            glow: 0.4,
+            brightness: 1.6,
+            sheen: 0.65,
+            glow: 0.7,
             grain: 0.03,
             quality: 0.5,
             mouseInteraction: true,
-            mouseStrength: 1,
+            mouseStrength: 1.2,
             intro: true,
             fade: 0,
             opacity: 1,
@@ -387,12 +387,12 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!visible || document.hidden) return;
             const dt = last ? Math.min(0.05, (now - last) / 1000) : 1 / 60;
             last = now;
-            const moving = !settings.paused && !reduce;
+            const moving = !settings.paused;
             if (moving) state.clock += dt * settings.speed;
             if (!settings.intro || reduce) state.intro = 1;
             else if (state.intro < 1) state.intro = Math.min(1, state.intro + dt / INTRO_SECONDS);
 
-            const engaged = settings.mouseInteraction && pointer.inside && !reduce;
+            const engaged = settings.mouseInteraction && pointer.inside;
             if (engaged && state.touch < 0.01) {
                 state.x = pointer.x;
                 state.y = pointer.y;
@@ -662,7 +662,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const message = formData.get('message');
             const recipient = emailLink.getAttribute('href').slice('mailto:'.length);
             const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+            const body = encodeURIComponent(`Name: ${name}
+Email: ${email}
+
+${message}`);
 
             if (status) {
                 status.textContent = `Your email app should open with your message ready to send. If it doesn't, email ${recipient}.`;
