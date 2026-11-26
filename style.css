@@ -1,11 +1,11 @@
 :root {
     --bg-color: #010307;
     --bg-color-2: #03070c;
-    --panel-bg: rgba(5, 9, 14, 0.96);
-    --panel-soft: rgba(7, 11, 17, 0.94);
+    --panel-bg: rgba(5, 9, 14, 0.78);
+    --panel-soft: rgba(7, 11, 17, 0.74);
     --text-color: #edf2f8;
     --text-muted: #9aa9ba;
-    --nav-bg: rgba(2, 4, 8, 0.98);
+    --nav-bg: rgba(2, 4, 8, 0.92);
     --container-width: 1200px;
     --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
@@ -19,18 +19,23 @@
     --shadow-accent: 0 16px 32px rgba(123, 183, 255, 0.15);
 }
 
-/* Background Glow Blobs - GPU accelerated to prevent scroll stutter */
-.bg-glow {
+/* DarkVeil WebGL Background */
+#dark-veil-bg {
     position: fixed;
-    width: 600px;
-    height: 600px;
-    background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
-    opacity: 0.05;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
     z-index: -1;
+    overflow: hidden;
     pointer-events: none;
-    border-radius: 50%;
-    transform: translateZ(0);
-    will-change: transform;
+}
+
+#dark-veil-canvas {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 .reveal-on-scroll {
@@ -43,24 +48,6 @@
 .reveal-on-scroll.revealed {
     opacity: 1;
     transform: translateY(0);
-}
-
-.glow-1 {
-    top: -200px;
-    right: -200px;
-}
-
-.glow-2 {
-    bottom: -200px;
-    left: -200px;
-}
-
-.glow-3 {
-    top: 40%;
-    left: -100px;
-    width: 400px;
-    height: 400px;
-    opacity: 0.035;
 }
 
 /* Animations */
@@ -86,18 +73,6 @@
     }
 }
 
-@keyframes glow {
-    0%,
-    100% {
-        opacity: 0.4;
-        transform: scale(1) blur(40px);
-    }
-    50% {
-        opacity: 0.6;
-        transform: scale(1.1) blur(60px);
-    }
-}
-
 /* Reset & Global Styles */
 * {
     margin: 0;
@@ -105,7 +80,7 @@
     box-sizing: border-box;
 }
 
-/* CRITICAL FIX: Base canvas color and color scheme preventing checkerboarding flashes */
+/* Base canvas color and color scheme preventing checkerboarding flashes */
 html {
     scroll-behavior: smooth;
     overflow-x: clip;
@@ -115,14 +90,12 @@ html {
 
 body {
     background-color: var(--bg-color);
-    background-image: radial-gradient(ellipse at 50% -20%, #080d15 0%, #03060a 38%, var(--bg-color) 72%);
-    background-repeat: no-repeat;
-    background-attachment: scroll;
     color: var(--text-color);
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
     overflow-x: clip;
     min-height: 100vh;
+    position: relative;
 }
 
 /* Optimize rendering of offscreen sections */
@@ -223,7 +196,7 @@ nav ul li a {
     padding: 0.55rem 0.85rem;
     border-radius: 10px;
     border: 1px solid transparent;
-    background: rgba(10, 16, 24, 0.28);
+    background: rgba(10, 16, 24, 0.35);
 }
 
 nav ul li a:hover,
@@ -375,6 +348,8 @@ textarea:focus-visible {
     align-items: center;
     font-size: 1.1rem;
     color: var(--text-color);
+    background: rgba(10, 16, 24, 0.45);
+    backdrop-filter: blur(8px);
     transition: var(--transition);
 }
 
@@ -419,12 +394,13 @@ textarea:focus-visible {
     color: var(--text-color);
     font-weight: 600;
     background: rgba(10, 16, 24, 0.56);
+    backdrop-filter: blur(8px);
 }
 
 .btn-secondary:hover {
     border-color: rgba(123, 183, 255, 0.7);
     color: var(--accent-hover);
-    background: rgba(123, 183, 255, 0.05);
+    background: rgba(123, 183, 255, 0.08);
     box-shadow: inset 0 0 0 1px rgba(123, 183, 255, 0.08);
 }
 
@@ -465,17 +441,17 @@ textarea:focus-visible {
 
 .skill-group {
     background: var(--panel-soft);
-    border: 1px solid rgba(202, 217, 239, 0.08);
+    border: 1px solid rgba(202, 217, 239, 0.1);
     padding: 1.5rem;
     border-radius: 16px;
     transition: var(--transition);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     box-shadow: var(--shadow-soft);
 }
 
 .skill-group:hover {
     transform: translateY(-3px);
-    background: rgba(8, 12, 18, 0.98);
+    background: rgba(8, 12, 18, 0.9);
     border-color: rgba(123, 183, 255, 0.42);
     box-shadow: var(--shadow-accent);
 }
@@ -576,9 +552,9 @@ textarea:focus-visible {
     background: var(--panel-bg);
     padding: 2rem;
     border-radius: 16px;
-    border: 1px solid rgba(202, 217, 239, 0.08);
+    border: 1px solid rgba(202, 217, 239, 0.1);
     transition: var(--transition);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(12px);
     box-shadow: var(--shadow-soft);
 }
 
@@ -602,7 +578,7 @@ textarea:focus-visible {
 .timeline-content:hover {
     border-color: rgba(123, 183, 255, 0.35);
     transform: translateX(4px);
-    background: rgba(7, 10, 15, 0.98);
+    background: rgba(7, 10, 15, 0.9);
     box-shadow: var(--shadow-accent);
 }
 
@@ -644,11 +620,11 @@ textarea:focus-visible {
 
 .project-card {
     background: var(--panel-bg);
-    border: 1px solid rgba(202, 217, 239, 0.08);
+    border: 1px solid rgba(202, 217, 239, 0.1);
     padding: 1.75rem;
     border-radius: 16px;
     transition: var(--transition);
-    backdrop-filter: blur(8px);
+    backdrop-filter: blur(12px);
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -657,7 +633,7 @@ textarea:focus-visible {
 
 .project-card:hover {
     transform: translateY(-3px);
-    background: rgba(7, 10, 15, 0.98);
+    background: rgba(7, 10, 15, 0.9);
     border-color: rgba(123, 183, 255, 0.42);
     box-shadow: var(--shadow-accent);
 }
@@ -771,19 +747,19 @@ textarea:focus-visible {
 .cert-card,
 .award-card {
     background: var(--panel-soft);
-    border: 1px solid rgba(202, 217, 239, 0.08);
+    border: 1px solid rgba(202, 217, 239, 0.1);
     padding: 2rem;
     border-radius: 16px;
     text-align: center;
     transition: var(--transition);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     box-shadow: var(--shadow-soft);
 }
 
 .cert-card:hover,
 .award-card:hover {
     transform: translateY(-3px);
-    background: rgba(7, 10, 15, 0.98);
+    background: rgba(7, 10, 15, 0.9);
     border-color: rgba(123, 183, 255, 0.42);
     box-shadow: var(--shadow-accent);
 }
@@ -829,8 +805,9 @@ textarea:focus-visible {
     -ms-user-select: text;
     user-select: text;
     min-width: 0;
-    background: rgba(9, 15, 22, 0.9);
-    border: 1px solid rgba(202, 217, 239, 0.12);
+    background: rgba(9, 15, 22, 0.78);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(202, 217, 239, 0.14);
     padding: 1rem 1.15rem;
     border-radius: 10px;
     color: var(--text-color);
@@ -844,7 +821,7 @@ textarea:focus-visible {
 .contact-form textarea:focus {
     outline: none;
     border-color: var(--accent-color);
-    background: rgba(7, 11, 17, 0.98);
+    background: rgba(7, 11, 17, 0.92);
     box-shadow: 0 0 15px var(--accent-glow-low);
 }
 
