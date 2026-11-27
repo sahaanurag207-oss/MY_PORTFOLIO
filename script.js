@@ -521,6 +521,7 @@ document.addEventListener('DOMContentLoaded', () => {
     magnetBtns.forEach(btn => {
         btn.classList.add('magnet-btn');
         btn.addEventListener('pointermove', (e) => {
+            if (btn.disabled) return;
             const rect = btn.getBoundingClientRect();
             const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
             const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
@@ -690,8 +691,11 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!target) return;
 
             e.preventDefault();
+            const headerOffset = header ? header.offsetHeight + 16 : 92;
+            const targetPosition = target.getBoundingClientRect().top + window.scrollY - headerOffset;
+
             window.scrollTo({
-                top: target.offsetTop - 70,
+                top: Math.max(0, targetPosition),
                 behavior: 'smooth'
             });
         });
@@ -719,31 +723,75 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
-    /* --- Contact Form Handler --- */
+    /* --- Toast Helper --- */
+    const toastEl = document.getElementById('toast-notification');
+    let toastTimer = null;
+    const showToast = (message, type = 'success') => {
+        if (!toastEl) return;
+        clearTimeout(toastTimer);
+        toastEl.textContent = message;
+        toastEl.className = `toast is-visible is-${type}`;
+        toastTimer = setTimeout(() => {
+            toastEl.classList.remove('is-visible');
+        }, 5000);
+    };
+
+    /* --- Contact Form Handler (In-Page AJAX via FormSubmit + Toast) --- */
     const contactForm = document.querySelector('.contact-form');
     if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+        contactForm.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const status = contactForm.querySelector('.form-status');
+            const submitBtn = contactForm.querySelector('button[type="submit"]');
             const emailLink = document.querySelector('.contact-info a[href^="mailto:"]');
-
-            if (!emailLink) {
-                if (status) status.textContent = 'Email contact is currently unavailable. Please try again later.';
-                return;
-            }
+            const recipient = emailLink
+                ? emailLink.getAttribute('href').slice('mailto:'.length)
+                : 'sahaanurag207@gmail.com';
 
             const formData = new FormData(contactForm);
-            const name = formData.get('name');
-            const email = formData.get('email');
-            const message = formData.get('message');
-            const recipient = emailLink.getAttribute('href').slice('mailto:'.length);
-            const subject = encodeURIComponent(`Portfolio contact from ${name}`);
-            const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\n${message}`);
+            if (formData.get('_honey')) return;
 
-            if (status) {
-                status.textContent = `Your email app should open with your message ready to send. If it doesn't, email ${recipient}.`;
+            const name = String(formData.get('name') || '').trim();
+            const email = String(formData.get('email') || '').trim();
+            const message = String(formData.get('message') || '').trim();
+
+            const payload = {
+                name,
+                email,
+                message,
+                _subject: `Portfolio Contact from ${name}`,
+                _template: 'table'
+            };
+
+            if (submitBtn) {
+                submitBtn.disabled = true;
+                submitBtn.textContent = 'Sending...';
             }
-            window.location.href = `mailto:${recipient}?subject=${subject}&body=${body}`;
+
+            try {
+                const response = await fetch(`https://formsubmit.co/ajax/${encodeURIComponent(recipient)}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(payload)
+                });
+
+                const result = await response.json();
+                if (!response.ok || result.success === 'false') {
+                    throw new Error(result.message || 'Submission failed');
+                }
+
+                showToast('Message sent! Thank you for reaching out—I will get back to you soon.', 'success');
+                contactForm.reset();
+            } catch (error) {
+                showToast(`Could not send right now. Please try again or reach out at ${recipient}.`, 'error');
+            } finally {
+                if (submitBtn) {
+                    submitBtn.disabled = false;
+                    submitBtn.textContent = 'Send Message';
+                }
+            }
         });
     }
 });
