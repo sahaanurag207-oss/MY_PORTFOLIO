@@ -43,6 +43,74 @@ main {
     z-index: 1;
 }
 
+/* React Bits: SpotlightCard Hover Glow */
+.spotlight-card {
+    position: relative;
+    overflow: hidden;
+    --mouse-x: 50%;
+    --mouse-y: 50%;
+}
+
+.spotlight-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        420px circle at var(--mouse-x) var(--mouse-y),
+        rgba(123, 183, 255, 0.16),
+        transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 0.35s ease;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.spotlight-card:hover::before {
+    opacity: 1;
+}
+
+.spotlight-card > * {
+    position: relative;
+    z-index: 1;
+}
+
+/* React Bits: Magnet Button & Glare Sweep */
+.magnet-btn {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+    transition: transform 0.2s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+}
+
+.magnet-btn::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.28),
+        transparent
+    );
+    transform: skewX(-20deg);
+    transition: left 0.55s ease;
+    pointer-events: none;
+}
+
+.magnet-btn:hover::after {
+    left: 140%;
+}
+
+/* React Bits: DecryptedText Monospace Accent */
+.decrypted-char {
+    color: var(--accent-color);
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
 .reveal-on-scroll {
     opacity: 0;
     transform: translateY(20px);

@@ -477,6 +477,61 @@ document.addEventListener('DOMContentLoaded', () => {
         resize();
     })();
 
+    /* --- React Bits: DecryptedText on Hero Subtitle --- */
+    const subtitleEl = document.querySelector('.hero-subtitle');
+    if (subtitleEl) {
+        const finalText = subtitleEl.textContent.trim();
+        const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*';
+        let iteration = 0;
+
+        const scrambleInterval = setInterval(() => {
+            subtitleEl.innerHTML = finalText
+                .split('')
+                .map((char, index) => {
+                    if (char === ' ' || char === '.') return char;
+                    if (index < iteration) return char;
+                    const rand = chars[Math.floor(Math.random() * chars.length)];
+                    return `<span class="decrypted-char">${rand}</span>`;
+                })
+                .join('');
+
+            if (iteration >= finalText.length) {
+                clearInterval(scrambleInterval);
+                subtitleEl.textContent = finalText;
+            }
+            iteration += 0.5;
+        }, 30);
+    }
+
+    /* --- React Bits: SpotlightCard Cursor Tracking --- */
+    const spotlightCards = document.querySelectorAll(
+        '.project-card, .skill-group, .cert-card, .award-card, .timeline-content'
+    );
+    spotlightCards.forEach(card => {
+        card.classList.add('spotlight-card');
+        card.addEventListener('pointermove', (e) => {
+            const rect = card.getBoundingClientRect();
+            card.style.setProperty('--mouse-x', `${e.clientX - rect.left}px`);
+            card.style.setProperty('--mouse-y', `${e.clientY - rect.top}px`);
+        }, { passive: true });
+    });
+
+    /* --- React Bits: Magnet CTA Buttons --- */
+    const magnetBtns = document.querySelectorAll('.hero-actions a, .contact-form .btn-primary');
+    magnetBtns.forEach(btn => {
+        btn.classList.add('magnet-btn');
+        btn.addEventListener('pointermove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = (e.clientX - rect.left - rect.width / 2) * 0.25;
+            const y = (e.clientY - rect.top - rect.height / 2) * 0.25;
+            btn.style.transform = `translate(${x}px, ${y}px)`;
+        }, { passive: true });
+
+        btn.addEventListener('pointerleave', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
+
     /* --- Copy Protection --- */
     const selectionIncludesProtectedText = () => {
         const selection = window.getSelection();
@@ -507,7 +562,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    /* --- Dynamic CGPA Recalculation --- */
+    /* --- Dynamic CGPA Recalculation & React Bits CountUp --- */
     const cgpaOutput = document.querySelector('#current-cgpa');
     if (cgpaOutput) {
         const semesters = [
@@ -526,7 +581,28 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             const totalCredits = semesters.reduce((sum, s) => sum + s.credits, 0);
             const weightedPoints = semesters.reduce((sum, s) => sum + s.sgpa * s.credits, 0);
-            cgpaOutput.textContent = (weightedPoints / totalCredits).toFixed(2);
+            const targetCgpa = weightedPoints / totalCredits;
+            cgpaOutput.textContent = targetCgpa.toFixed(2);
+
+            let cgpaAnimated = false;
+            const countObserver = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting && !cgpaAnimated) {
+                    cgpaAnimated = true;
+                    const duration = 1200;
+                    const start = performance.now();
+
+                    const step = (now) => {
+                        const progress = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        cgpaOutput.textContent = (targetCgpa * eased).toFixed(2);
+                        if (progress < 1) requestAnimationFrame(step);
+                        else cgpaOutput.textContent = targetCgpa.toFixed(2);
+                    };
+                    requestAnimationFrame(step);
+                }
+            }, { threshold: 0.5 });
+
+            countObserver.observe(cgpaOutput);
         }
     }
 
