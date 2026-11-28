@@ -792,17 +792,29 @@ textarea:focus-visible {
 .btn-project {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--accent-hover);
+    gap: 0.4rem;
+    padding: 0.42rem 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    font-size: 0.9rem;
+    color: var(--accent-hover);
+    background: rgba(123, 183, 255, 0.1);
+    border: 1px solid rgba(123, 183, 255, 0.28);
+    border-radius: 8px;
     transition: var(--transition);
     align-self: flex-start;
     margin-top: auto;
 }
 
+.btn-project i {
+    font-size: 0.72rem;
+}
+
 .btn-project:hover {
-    gap: 0.65rem;
+    background: rgba(123, 183, 255, 0.2);
+    border-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(123, 183, 255, 0.18);
 }
 
 .award-link {
