@@ -820,19 +820,25 @@ textarea:focus-visible {
 .award-link {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    color: var(--accent-color);
+    justify-content: center;
+    gap: 0.45rem;
+    padding: 0.5rem 0.95rem;
+    font-size: 0.82rem;
     font-weight: 600;
-    font-size: 0.84rem;
+    color: var(--accent-hover);
+    background: rgba(123, 183, 255, 0.1);
+    border: 1px solid rgba(123, 183, 255, 0.28);
+    border-radius: 8px;
     margin-top: auto;
-    padding-top: 1rem;
     transition: var(--transition);
-    border-bottom: 1px solid rgba(116, 174, 245, 0.55);
 }
 
 .award-link:hover {
-    border-bottom-color: var(--accent-color);
-    gap: 0.65rem;
+    background: rgba(123, 183, 255, 0.2);
+    border-color: var(--accent-color);
+    color: #ffffff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(123, 183, 255, 0.18);
 }
 
 .social-links a:focus-visible,
